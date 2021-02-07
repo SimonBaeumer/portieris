@@ -83,6 +83,7 @@ func (v *Verifier) VerifyByPolicy(namespace string, img *image.Reference, creden
 	credentials = append(credentials, credential.Credential{})
 	for _, credential := range credentials {
 		notaryToken, err := v.cr.GetContentTrustToken(credential.Username, credential.Password, img.NameWithoutTag(), img.GetRegistryURL())
+		glog.Infof("NOTARY TOKEN: %v", notaryToken)
 		if err != nil {
 			glog.Error(err)
 			continue

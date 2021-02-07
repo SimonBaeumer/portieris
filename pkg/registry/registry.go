@@ -16,6 +16,7 @@ package registry
 
 import (
 	"github.com/IBM/portieris/helpers/oauth"
+	"github.com/golang/glog"
 )
 
 // Client .
@@ -41,7 +42,8 @@ func (c Client) GetContentTrustToken(username, password, imageRepo, hostname str
 	if err != nil {
 		return "", err
 	}
-	return token.Token, nil
+	glog.Infof("RESPONSE: %+v", token)
+	return token.AccessToken, nil
 }
 
 // GetRegistryToken .

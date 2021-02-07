@@ -7,6 +7,9 @@ GOTAGS='containers_image_openpgp'
 
 .PHONY: test
 
+build-dev: image
+	kubectl -n portieris delete pod -l app=portieris
+
 image: 
 	docker build -t portieris:$(TAG) .
 

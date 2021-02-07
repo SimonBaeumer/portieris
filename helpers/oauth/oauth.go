@@ -24,6 +24,7 @@ import (
 	"net/http"
 	"net/url"
 	"os"
+	"strings"
 	"time"
 
 	"github.com/golang/glog"
@@ -90,15 +91,24 @@ func Request(token string, repo string, username string, writeAccessRequired boo
 	}
 
 	client := GetHTTPClient("/etc/certs/ca.pem")
+	oauthEndpoint := "/oauth/token"
 
-	resp, err := client.PostForm(hostname+"/oauth/token", url.Values{
-		"service":    {service},
+	if strings.Contains(hostname, "docker.io") {
+		hostname = "https://auth.docker.io"
+		oauthEndpoint = "/token"
+	}
+
+	values := url.Values{
+		"service":    []string{fmt.Sprintf("%s.%s", service, hostname)},
 		"grant_type": {"password"},
 		"client_id":  {"testclient"},
 		"username":   {username},
 		"password":   {token},
 		"scope":      {"repository:" + repo + ":" + actions},
-	})
+	}
+	glog.Infof("URL values: %v", values)
+
+	resp, err := client.PostForm(hostname+oauthEndpoint, values)
 
 	if err != nil {
 		glog.Errorf("Error sending request to registry-oauth: %v", err)
@@ -113,7 +123,7 @@ func Request(token string, repo string, username string, writeAccessRequired boo
 		if resp.Body != nil {
 			body, _ = ioutil.ReadAll(resp.Body)
 		}
-		return nil, fmt.Errorf("Request to OAuth failed with status code: %v and body: %s", resp.StatusCode, body)
+		return nil, fmt.Errorf("Request to OAuth failed with status code: %v and body: %s", resp.StatusCode, body[:50])
 	}
 
 	tokenResponse := TokenResponse{}

@@ -26,7 +26,11 @@ spec:
       serviceAccountName: portieris
       containers:
         - name: {{ .Chart.Name }}
-          image: "{{ .Values.image.host | default "docker.io/ibmcom"  }}/{{ .Values.image.image }}:{{ .Values.image.tag }}"
+          {{- if .Values.image.host }}
+          image: "{{ .Values.image.host }}/{{ .Values.image.image }}:{{ .Values.image.tag }}"
+          {{- else }}
+          image: "{{ .Values.image.image }}:{{ .Values.image.tag }}"
+          {{- end}}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
