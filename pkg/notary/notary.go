@@ -18,6 +18,7 @@ import (
 	"crypto/tls"
 	"crypto/x509"
 	"fmt"
+	"github.com/IBM/portieris/helpers/credential"
 	"net"
 	"net/http"
 	"os"
@@ -39,6 +40,7 @@ type Client struct {
 // Interface .
 type Interface interface {
 	GetNotaryRepo(server, image, notaryToken string) (notaryclient.Repository, error)
+	GetDockerNotaryRepo(server, image string, credential credential.Credential) (notaryclient.Repository, error)
 }
 
 // NewClient creates and initializes the client
@@ -56,6 +58,10 @@ func NewClient(trustDir string, customCA []byte) (Interface, error) {
 		rootCA.AppendCertsFromPEM(customCA)
 	}
 	return &Client{trustDir: trustDir, rootCAs: rootCA}, nil
+}
+
+func (c Client) GetDockerNotaryRepo(server, image string, credential credential.Credential) (notaryclient.Repository, error) {
+		return getNotaryRepo(credential.Username, credential.Password, image)
 }
 
 // GetNotaryRepo .

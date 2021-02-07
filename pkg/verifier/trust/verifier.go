@@ -89,7 +89,7 @@ func (v *Verifier) VerifyByPolicy(namespace string, img *image.Reference, creden
 			continue
 		}
 
-		digest, err := v.getDigest(notaryURL, img.NameWithoutTag(), notaryToken, img.GetTag(), signers)
+		digest, err := v.getDigest(notaryURL, img.NameWithoutTag(), notaryToken, img.GetTag(), signers, credential)
 		if err != nil {
 			if strings.Contains(err.Error(), "401") {
 				continue
