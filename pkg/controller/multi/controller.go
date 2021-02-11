@@ -242,7 +242,12 @@ func (c *Controller) getPatchesForContainers(containerType, namespace, specPath 
 func (c *Controller) getPodCredentials(namespace string, img *image.Reference, pod corev1.PodSpec) credential.Credentials {
 	var creds credential.Credentials
 	for _, secret := range pod.ImagePullSecrets {
-		username, password, err := c.kubeClientsetWrapper.GetSecretToken(namespace, secret.Name, img.GetHostname())
+		glog.Infof("NAMESPACE: %s, HOSTNAME: %s, %+v", namespace, img.GetHostname(), secret)
+		hostname := img.GetHostname()
+		if img.GetHostname() == "docker.io" {
+			hostname = "https://index.docker.io/v1/"
+		}
+		username, password, err := c.kubeClientsetWrapper.GetSecretToken(namespace, secret.Name, hostname)
 		if err != nil {
 			glog.Error(err)
 			continue

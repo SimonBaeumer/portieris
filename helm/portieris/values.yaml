@@ -24,7 +24,7 @@ webHooks:
   failurePolicy: Fail
 
 # If not running on IBM Cloud Container Service set to false
-IBMContainerService: true
+IBMContainerService: false
 
 # If managing portieris-certs secret externally
 SkipSecretCreation: false
