@@ -15,7 +15,7 @@
 package registry
 
 import (
-	"github.com/IBM/portieris/helpers/oauth"
+	"github.com/SimonBaeumer/portieris/helpers/oauth"
 	"github.com/golang/glog"
 )
 

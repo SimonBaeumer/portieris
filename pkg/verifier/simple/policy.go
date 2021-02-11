@@ -19,8 +19,8 @@ package simple
 import (
 	"fmt"
 
-	policyv1 "github.com/IBM/portieris/pkg/apis/portieris.cloud.ibm.com/v1"
-	"github.com/IBM/portieris/pkg/kubernetes"
+	policyv1 "github.com/SimonBaeumer/portieris/pkg/apis/portieris.cloud.ibm.com/v1"
+	"github.com/SimonBaeumer/portieris/pkg/kubernetes"
 	"github.com/containers/image/v5/signature"
 )
 

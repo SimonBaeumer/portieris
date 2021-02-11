@@ -19,7 +19,7 @@ import (
 	"context"
 	"encoding/hex"
 	"fmt"
-	"github.com/IBM/portieris/helpers/credential"
+	"github.com/SimonBaeumer/portieris/helpers/credential"
 	notaryclient "github.com/theupdateframework/notary/client"
 	"path"
 	"strings"

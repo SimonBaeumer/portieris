@@ -22,17 +22,17 @@ import (
 	"os"
 	"strings"
 
-	"github.com/IBM/portieris/pkg/metrics"
-	notaryclient "github.com/IBM/portieris/pkg/notary"
+	"github.com/SimonBaeumer/portieris/pkg/metrics"
+	notaryclient "github.com/SimonBaeumer/portieris/pkg/notary"
 	"github.com/gorilla/mux"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 
-	kube "github.com/IBM/portieris/helpers/kube"
-	"github.com/IBM/portieris/pkg/controller/multi"
-	"github.com/IBM/portieris/pkg/kubernetes"
-	registryclient "github.com/IBM/portieris/pkg/registry"
-	notaryverifier "github.com/IBM/portieris/pkg/verifier/trust"
-	"github.com/IBM/portieris/pkg/webhook"
+	kube "github.com/SimonBaeumer/portieris/helpers/kube"
+	"github.com/SimonBaeumer/portieris/pkg/controller/multi"
+	"github.com/SimonBaeumer/portieris/pkg/kubernetes"
+	registryclient "github.com/SimonBaeumer/portieris/pkg/registry"
+	notaryverifier "github.com/SimonBaeumer/portieris/pkg/verifier/trust"
+	"github.com/SimonBaeumer/portieris/pkg/webhook"
 	"github.com/golang/glog"
 )
 

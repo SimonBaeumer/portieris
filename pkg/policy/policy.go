@@ -18,8 +18,8 @@ import (
 	"context"
 	"fmt"
 
-	policyClientSet "github.com/IBM/portieris/pkg/apis/portieris.cloud.ibm.com/client/clientset/versioned"
-	policyV1 "github.com/IBM/portieris/pkg/apis/portieris.cloud.ibm.com/v1"
+	policyClientSet "github.com/SimonBaeumer/portieris/pkg/apis/portieris.cloud.ibm.com/client/clientset/versioned"
+	policyV1 "github.com/SimonBaeumer/portieris/pkg/apis/portieris.cloud.ibm.com/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 

@@ -18,7 +18,7 @@ import (
 	"crypto/tls"
 	"crypto/x509"
 	"fmt"
-	"github.com/IBM/portieris/helpers/credential"
+	"github.com/SimonBaeumer/portieris/helpers/credential"
 	"net"
 	"net/http"
 	"os"

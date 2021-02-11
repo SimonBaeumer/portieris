@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
-	"github.com/IBM/portieris/helpers/oauth"
-	notaryclient "github.com/IBM/portieris/pkg/notary"
-	//"github.com/IBM/portieris/pkg/verifier/trust"
+	"github.com/SimonBaeumer/portieris/helpers/oauth"
+	notaryclient "github.com/SimonBaeumer/portieris/pkg/notary"
+	//"github.com/SimonBaeumer/portieris/pkg/verifier/trust"
 	"github.com/golang/glog"
 	"log"
 	"os"

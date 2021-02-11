@@ -17,7 +17,7 @@ package utils
 import (
 	"testing"
 
-	"github.com/IBM/portieris/test/framework"
+	"github.com/SimonBaeumer/portieris/test/framework"
 )
 
 func CreateSecret(t *testing.T, fw *framework.Framework, manifestPath, namespace string) {

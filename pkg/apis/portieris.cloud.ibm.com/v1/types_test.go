@@ -15,7 +15,7 @@
 package v1_test
 
 import (
-	. "github.com/IBM/portieris/pkg/apis/portieris.cloud.ibm.com/v1"
+	. "github.com/SimonBaeumer/portieris/pkg/apis/portieris.cloud.ibm.com/v1"
 
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"

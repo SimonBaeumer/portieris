@@ -22,12 +22,12 @@ import (
 
 	"k8s.io/apimachinery/pkg/runtime"
 
-	policyclientsetfake "github.com/IBM/portieris/pkg/apis/portieris.cloud.ibm.com/client/clientset/versioned/fake"
-	"github.com/IBM/portieris/pkg/kubernetes"
-	"github.com/IBM/portieris/pkg/notary/fakenotary"
-	"github.com/IBM/portieris/pkg/policy"
-	notaryverifier "github.com/IBM/portieris/pkg/verifier/trust"
-	"github.com/IBM/portieris/pkg/webhook"
+	policyclientsetfake "github.com/SimonBaeumer/portieris/pkg/apis/portieris.cloud.ibm.com/client/clientset/versioned/fake"
+	"github.com/SimonBaeumer/portieris/pkg/kubernetes"
+	"github.com/SimonBaeumer/portieris/pkg/notary/fakenotary"
+	"github.com/SimonBaeumer/portieris/pkg/policy"
+	notaryverifier "github.com/SimonBaeumer/portieris/pkg/verifier/trust"
+	"github.com/SimonBaeumer/portieris/pkg/webhook"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 	notaryclient "github.com/theupdateframework/notary/client"

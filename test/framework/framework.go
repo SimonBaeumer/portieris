@@ -25,7 +25,7 @@ import (
 	"k8s.io/client-go/rest"
 	"k8s.io/client-go/tools/clientcmd"
 
-	policyclientset "github.com/IBM/portieris/pkg/apis/portieris.cloud.ibm.com/client/clientset/versioned"
+	policyclientset "github.com/SimonBaeumer/portieris/pkg/apis/portieris.cloud.ibm.com/client/clientset/versioned"
 	customResourceDefinitionClientSet "github.com/kubernetes/apiextensions-apiserver/pkg/client/clientset/internalclientset/typed/apiextensions/internalversion"
 
 	// Needed for testing using oidc (Armada)

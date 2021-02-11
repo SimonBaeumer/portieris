@@ -19,7 +19,7 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/IBM/portieris/helpers/trustmap"
+	"github.com/SimonBaeumer/portieris/helpers/trustmap"
 	"github.com/docker/distribution/reference"
 )
 
