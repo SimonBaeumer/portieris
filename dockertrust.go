@@ -43,7 +43,7 @@ func main() {
 		log.Fatal(err)
 	}
 	fmt.Println(repo.GetGUN())
-	meta, err := repo.GetAllTargetMetadataByName("1.14.2")
+	meta, err := repo.GetAllTargetMetadataByName("1.20")
 	if err != nil {
 		log.Fatal(err)
 	}
