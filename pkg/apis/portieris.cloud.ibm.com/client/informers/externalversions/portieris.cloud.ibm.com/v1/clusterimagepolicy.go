@@ -19,12 +19,13 @@ limitations under the License.
 package v1
 
 import (
+	"context"
 	time "time"
 
-	versioned "github.com/IBM/portieris/pkg/apis/portieris.cloud.ibm.com/client/clientset/versioned"
-	internalinterfaces "github.com/IBM/portieris/pkg/apis/portieris.cloud.ibm.com/client/informers/externalversions/internalinterfaces"
-	v1 "github.com/IBM/portieris/pkg/apis/portieris.cloud.ibm.com/client/listers/portieris.cloud.ibm.com/v1"
-	portieriscloudibmcomv1 "github.com/IBM/portieris/pkg/apis/portieris.cloud.ibm.com/v1"
+	versioned "github.com/SimonBaeumer/portieris/pkg/apis/portieris.cloud.ibm.com/client/clientset/versioned"
+	internalinterfaces "github.com/SimonBaeumer/portieris/pkg/apis/portieris.cloud.ibm.com/client/informers/externalversions/internalinterfaces"
+	v1 "github.com/SimonBaeumer/portieris/pkg/apis/portieris.cloud.ibm.com/client/listers/portieris.cloud.ibm.com/v1"
+	portieriscloudibmcomv1 "github.com/SimonBaeumer/portieris/pkg/apis/portieris.cloud.ibm.com/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 	watch "k8s.io/apimachinery/pkg/watch"
@@ -60,13 +61,13 @@ func NewFilteredClusterImagePolicyInformer(client versioned.Interface, resyncPer
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.PortierisV1().ClusterImagePolicies().List(options)
+				return client.PortierisV1().ClusterImagePolicies().List(context.TODO(), options)
 			},
 			WatchFunc: func(options metav1.ListOptions) (watch.Interface, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.PortierisV1().ClusterImagePolicies().Watch(options)
+				return client.PortierisV1().ClusterImagePolicies().Watch(context.TODO(), options)
 			},
 		},
 		&portieriscloudibmcomv1.ClusterImagePolicy{},

@@ -19,7 +19,7 @@ limitations under the License.
 package fake
 
 import (
-	portierisv1 "github.com/IBM/portieris/pkg/apis/portieris.cloud.ibm.com/v1"
+	portierisv1 "github.com/SimonBaeumer/portieris/pkg/apis/portieris.cloud.ibm.com/v1"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 	schema "k8s.io/apimachinery/pkg/runtime/schema"
@@ -29,7 +29,7 @@ import (
 
 var scheme = runtime.NewScheme()
 var codecs = serializer.NewCodecFactory(scheme)
-var parameterCodec = runtime.NewParameterCodec(scheme)
+
 var localSchemeBuilder = runtime.SchemeBuilder{
 	portierisv1.AddToScheme,
 }

@@ -1,6 +1,6 @@
 # utils
 --
-    import "github.com/IBM/portieris/test/e2e/utils"
+    import "github.com/SimonBaeumer/portieris/test/e2e/utils"
 
 
 ## Usage

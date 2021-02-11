@@ -7,6 +7,9 @@ GOTAGS='containers_image_openpgp'
 
 .PHONY: test
 
+build-dev: image
+	kubectl -n portieris delete pod -l app=portieris
+
 image: 
 	docker build -t portieris:$(TAG) .
 
@@ -20,13 +23,13 @@ test-deps:
 alltests: test-deps fmt lint vet copyright-check test
 
 test:
-	@${GOPATH}/src/github.com/IBM/portieris/scripts/makeTest.sh "${GOPACKAGES}" ${GOTAGS}
+	@${GOPATH}/src/github.com/SimonBaeumer/portieris/scripts/makeTest.sh "${GOPACKAGES}" ${GOTAGS}
 
 copyright:
-	@${GOPATH}/src/github.com/IBM/portieris/scripts/copyright.sh
+	@${GOPATH}/src/github.com/SimonBaeumer/portieris/scripts/copyright.sh
 
 copyright-check:
-	@${GOPATH}/src/github.com/IBM/portieris/scripts/copyright-check.sh
+	@${GOPATH}/src/github.com/SimonBaeumer/portieris/scripts/copyright-check.sh
 
 fmt:
 	@if [ -n "$$(gofmt -l ${GOFILES})" ]; then echo 'Please run gofmt -l -w on your code.' && exit 1; fi
@@ -97,9 +100,9 @@ e2e.clean: helm.clean
 .PHONY: code-generator regenerate
 
 code-generator:
-	git clone https://github.com/kubernetes/code-generator.git --branch v0.17.16 $(GOPATH)/src/k8s.io/code-generator
+	git clone https://github.com/kubernetes/code-generator.git --branch v0.19.2 $(GOPATH)/src/k8s.io/code-generator
 
 regenerate:
-	$(GOPATH)/src/k8s.io/code-generator/generate-groups.sh all github.com/IBM/portieris/pkg/apis/portieris.cloud.ibm.com/client github.com/IBM/portieris/pkg/apis portieris.cloud.ibm.com:v1
+	$(GOPATH)/src/k8s.io/code-generator/generate-groups.sh all github.com/SimonBaeumer/portieris/pkg/apis/portieris.cloud.ibm.com/client github.com/SimonBaeumer/portieris/pkg/apis portieris.cloud.ibm.com:v1
 
 

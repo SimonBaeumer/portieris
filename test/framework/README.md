@@ -1,6 +1,6 @@
 # framework
 --
-    import "github.com/IBM/portieris/test/framework"
+    import "github.com/SimonBaeumer/portieris/test/framework"
 
 
 ## Usage

@@ -17,9 +17,9 @@ package simple
 import (
 	"bytes"
 
-	"github.com/IBM/portieris/helpers/credential"
-	policyv1 "github.com/IBM/portieris/pkg/apis/portieris.cloud.ibm.com/v1"
-	"github.com/IBM/portieris/pkg/kubernetes"
+	"github.com/SimonBaeumer/portieris/helpers/credential"
+	policyv1 "github.com/SimonBaeumer/portieris/pkg/apis/portieris.cloud.ibm.com/v1"
+	"github.com/SimonBaeumer/portieris/pkg/kubernetes"
 	"github.com/containers/image/v5/signature"
 )
 

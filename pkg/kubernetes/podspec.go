@@ -15,6 +15,7 @@
 package kubernetes
 
 import (
+	"context"
 	"fmt"
 
 	"github.com/golang/glog"
@@ -274,7 +275,7 @@ func (w *Wrapper) mutateWithSA(ns string, ps *corev1.PodSpec) error {
 	if ps.ServiceAccountName != "" {
 		name = ps.ServiceAccountName
 	}
-	sa, err := w.CoreV1().ServiceAccounts(ns).Get(name, metav1.GetOptions{})
+	sa, err := w.CoreV1().ServiceAccounts(ns).Get(context.TODO(), name, metav1.GetOptions{})
 	if err != nil {
 		return err
 	}

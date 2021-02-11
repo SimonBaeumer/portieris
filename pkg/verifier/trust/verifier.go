@@ -19,12 +19,12 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/IBM/portieris/helpers/credential"
-	"github.com/IBM/portieris/helpers/image"
-	policyv1 "github.com/IBM/portieris/pkg/apis/portieris.cloud.ibm.com/v1"
-	"github.com/IBM/portieris/pkg/kubernetes"
-	"github.com/IBM/portieris/pkg/notary"
-	registryclient "github.com/IBM/portieris/pkg/registry"
+	"github.com/SimonBaeumer/portieris/helpers/credential"
+	"github.com/SimonBaeumer/portieris/helpers/image"
+	policyv1 "github.com/SimonBaeumer/portieris/pkg/apis/portieris.cloud.ibm.com/v1"
+	"github.com/SimonBaeumer/portieris/pkg/kubernetes"
+	"github.com/SimonBaeumer/portieris/pkg/notary"
+	registryclient "github.com/SimonBaeumer/portieris/pkg/registry"
 	"github.com/golang/glog"
 	store "github.com/theupdateframework/notary/storage"
 	"k8s.io/apimachinery/pkg/runtime"
@@ -83,12 +83,13 @@ func (v *Verifier) VerifyByPolicy(namespace string, img *image.Reference, creden
 	credentials = append(credentials, credential.Credential{})
 	for _, credential := range credentials {
 		notaryToken, err := v.cr.GetContentTrustToken(credential.Username, credential.Password, img.NameWithoutTag(), img.GetRegistryURL())
+		glog.Infof("NOTARY TOKEN: %v", notaryToken)
 		if err != nil {
 			glog.Error(err)
 			continue
 		}
 
-		digest, err := v.getDigest(notaryURL, img.NameWithoutTag(), notaryToken, img.GetTag(), signers)
+		digest, err := v.getDigest(notaryURL, img.NameWithoutTag(), notaryToken, img.GetTag(), signers, credential)
 		if err != nil {
 			if strings.Contains(err.Error(), "401") {
 				continue

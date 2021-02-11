@@ -2,14 +2,14 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-replicaCount: 3
+replicaCount: 1
 
 image:
-  host: icr.io/portieris
+  host:
   pullSecret:
   image: portieris
   tag: v0.10.1
-  pullPolicy: Always
+  pullPolicy: Never
 
 service:
   type: ClusterIP

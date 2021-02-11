@@ -18,13 +18,13 @@ import (
 	"bytes"
 	"fmt"
 
-	"github.com/IBM/portieris/helpers/credential"
-	"github.com/IBM/portieris/helpers/image"
-	policyv1 "github.com/IBM/portieris/pkg/apis/portieris.cloud.ibm.com/v1"
-	"github.com/IBM/portieris/pkg/kubernetes"
-	"github.com/IBM/portieris/pkg/verifier/simple"
-	notaryverifier "github.com/IBM/portieris/pkg/verifier/trust"
-	"github.com/IBM/portieris/pkg/verifier/vulnerability"
+	"github.com/SimonBaeumer/portieris/helpers/credential"
+	"github.com/SimonBaeumer/portieris/helpers/image"
+	policyv1 "github.com/SimonBaeumer/portieris/pkg/apis/portieris.cloud.ibm.com/v1"
+	"github.com/SimonBaeumer/portieris/pkg/kubernetes"
+	"github.com/SimonBaeumer/portieris/pkg/verifier/simple"
+	notaryverifier "github.com/SimonBaeumer/portieris/pkg/verifier/trust"
+	"github.com/SimonBaeumer/portieris/pkg/verifier/vulnerability"
 	"github.com/golang/glog"
 )
 

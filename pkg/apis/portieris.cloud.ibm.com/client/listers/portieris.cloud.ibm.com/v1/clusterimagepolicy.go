@@ -19,17 +19,20 @@ limitations under the License.
 package v1
 
 import (
-	v1 "github.com/IBM/portieris/pkg/apis/portieris.cloud.ibm.com/v1"
+	v1 "github.com/SimonBaeumer/portieris/pkg/apis/portieris.cloud.ibm.com/v1"
 	"k8s.io/apimachinery/pkg/api/errors"
 	"k8s.io/apimachinery/pkg/labels"
 	"k8s.io/client-go/tools/cache"
 )
 
 // ClusterImagePolicyLister helps list ClusterImagePolicies.
+// All objects returned here must be treated as read-only.
 type ClusterImagePolicyLister interface {
 	// List lists all ClusterImagePolicies in the indexer.
+	// Objects returned here must be treated as read-only.
 	List(selector labels.Selector) (ret []*v1.ClusterImagePolicy, err error)
 	// Get retrieves the ClusterImagePolicy from the index for a given name.
+	// Objects returned here must be treated as read-only.
 	Get(name string) (*v1.ClusterImagePolicy, error)
 	ClusterImagePolicyListerExpansion
 }

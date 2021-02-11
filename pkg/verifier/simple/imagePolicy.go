@@ -22,7 +22,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/IBM/portieris/helpers/credential"
+	"github.com/SimonBaeumer/portieris/helpers/credential"
 	"github.com/containers/image/v5/docker"
 	"github.com/containers/image/v5/image"
 	"github.com/containers/image/v5/manifest"

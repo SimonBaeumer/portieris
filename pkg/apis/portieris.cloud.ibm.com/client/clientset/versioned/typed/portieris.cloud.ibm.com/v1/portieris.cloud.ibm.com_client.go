@@ -19,8 +19,8 @@ limitations under the License.
 package v1
 
 import (
-	"github.com/IBM/portieris/pkg/apis/portieris.cloud.ibm.com/client/clientset/versioned/scheme"
-	v1 "github.com/IBM/portieris/pkg/apis/portieris.cloud.ibm.com/v1"
+	"github.com/SimonBaeumer/portieris/pkg/apis/portieris.cloud.ibm.com/client/clientset/versioned/scheme"
+	v1 "github.com/SimonBaeumer/portieris/pkg/apis/portieris.cloud.ibm.com/v1"
 	rest "k8s.io/client-go/rest"
 )
 

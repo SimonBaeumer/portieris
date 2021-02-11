@@ -18,7 +18,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/IBM/portieris/test/framework"
+	"github.com/SimonBaeumer/portieris/test/framework"
 	"github.com/stretchr/testify/assert"
 	batchv1 "k8s.io/api/batch/v1"
 )

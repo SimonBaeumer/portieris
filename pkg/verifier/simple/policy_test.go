@@ -18,8 +18,8 @@ import (
 	"fmt"
 	"testing"
 
-	policyv1 "github.com/IBM/portieris/pkg/apis/portieris.cloud.ibm.com/v1"
-	"github.com/IBM/portieris/pkg/kubernetes"
+	policyv1 "github.com/SimonBaeumer/portieris/pkg/apis/portieris.cloud.ibm.com/v1"
+	"github.com/SimonBaeumer/portieris/pkg/kubernetes"
 	"github.com/golang/glog"
 	"github.com/stretchr/testify/assert"
 )

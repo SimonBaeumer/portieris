@@ -16,9 +16,13 @@ package trust
 
 import (
 	"bytes"
+	"context"
 	"encoding/hex"
 	"fmt"
+	"github.com/SimonBaeumer/portieris/helpers/credential"
+	notaryclient "github.com/theupdateframework/notary/client"
 	"path"
+	"strings"
 
 	"github.com/golang/glog"
 	"github.com/theupdateframework/notary/tuf/data"
@@ -40,8 +44,15 @@ type foundSigner struct {
 }
 
 // getDigest .
-func (v *Verifier) getDigest(server, image, notaryToken, targetName string, signers []Signer) (*bytes.Buffer, error) {
-	repo, err := v.trust.GetNotaryRepo(server, image, notaryToken)
+func (v *Verifier) getDigest(server, image, notaryToken, targetName string, signers []Signer, credential credential.Credential) (*bytes.Buffer, error) {
+	var repo notaryclient.Repository
+	var err error
+	glog.Infof("Server: %s, Image: %s, TargetName: %s, token: %s", server, image, targetName, notaryToken)
+	if strings.Contains(server, "docker") {
+		repo, err = v.trust.GetDockerNotaryRepo(server, image, credential)
+	} else {
+		repo, err = v.trust.GetNotaryRepo(server, image, notaryToken)
+	}
 	if err != nil {
 		return nil, err
 	}
@@ -124,7 +135,7 @@ func (v *Verifier) getDigest(server, image, notaryToken, targetName string, sign
 func (v *Verifier) getSignerSecret(namespace, signerSecretName string) (Signer, error) {
 
 	// Retrieve secret
-	secret, err := v.kubeClientsetWrapper.CoreV1().Secrets(namespace).Get(signerSecretName, metav1.GetOptions{})
+	secret, err := v.kubeClientsetWrapper.CoreV1().Secrets(namespace).Get(context.TODO(), signerSecretName, metav1.GetOptions{})
 	if err != nil {
 		glog.Error("Error: ", err)
 		return Signer{}, err
