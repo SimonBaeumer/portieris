@@ -1,4 +1,4 @@
-module github.com/IBM/portieris
+module github.com/SimonBaeumer/portieris
 
 go 1.14
 
