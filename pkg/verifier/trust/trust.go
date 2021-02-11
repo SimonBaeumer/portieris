@@ -47,7 +47,6 @@ type foundSigner struct {
 func (v *Verifier) getDigest(server, image, notaryToken, targetName string, signers []Signer, credential credential.Credential) (*bytes.Buffer, error) {
 	var repo notaryclient.Repository
 	var err error
-	glog.Infof("Server: %s, Image: %s, TargetName: %s, token: %s", server, image, targetName, notaryToken)
 	if strings.Contains(server, "docker") {
 		repo, err = v.trust.GetDockerNotaryRepo(server, image, credential)
 	} else {

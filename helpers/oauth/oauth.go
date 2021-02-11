@@ -106,7 +106,6 @@ func Request(token string, repo string, username string, writeAccessRequired boo
 		"password":   {token},
 		"scope":      {"repository:" + repo + ":" + actions},
 	}
-	glog.Infof("URL values: %v", values)
 
 	resp, err := client.PostForm(hostname+oauthEndpoint, values)
 
